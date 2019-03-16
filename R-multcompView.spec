@@ -4,22 +4,22 @@
 #
 Name     : R-multcompView
 Version  : 0.1.7
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/multcompView_0.1-7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/multcompView_0.1-7.tar.gz
 Summary  : Visualizations of Paired Comparisons
 Group    : Development/Tools
 License  : GPL-2.0
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 
 %description
-p-values or a correlation, difference, or distance
-    matrix into a display identifying the pairs for
-    which the differences were not significantly
-    different.  Designed for use in conjunction with
-    the output of functions like TukeyHSD, dist{stats},
-    simint, simtest, csimint, csimtest{multcomp},
-    friedmanmc, kruskalmc{pgirmess}.
+1. Put any C/C++/Fortran code in 'src'
+2. If you have compiled code, add a .First.lib() function in 'R'
+to load the shared library
+3. Edit the help file skeletons in 'man'
+4. Run R CMD build to create the index files
+5. Run R CMD check to check the package
+6. Run R CMD build to make the package file
 
 %prep
 %setup -q -c -n multcompView
@@ -29,11 +29,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523743300
+export SOURCE_DATE_EPOCH=1552777521
 
 %install
+export SOURCE_DATE_EPOCH=1552777521
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523743300
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -68,8 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library multcompView|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  multcompView || :
 
 
 %files
