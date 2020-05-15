@@ -4,7 +4,7 @@
 #
 Name     : R-multcompView
 Version  : 0.1.8
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/multcompView_0.1-8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/multcompView_0.1-8.tar.gz
 Summary  : Visualizations of Paired Comparisons
@@ -13,31 +13,32 @@ License  : GPL-2.0
 BuildRequires : buildreq-R
 
 %description
-1. Put any C/C++/Fortran code in 'src'
-2. If you have compiled code, add a .First.lib() function in 'R'
-to load the shared library
-3. Edit the help file skeletons in 'man'
-4. Run R CMD build to create the index files
-5. Run R CMD check to check the package
-6. Run R CMD build to make the package file
+p-values or a correlation, difference, or distance
+    matrix into a display identifying the pairs for
+    which the differences were not significantly
+    different.  Designed for use in conjunction with
+    the output of functions like TukeyHSD, dist{stats},
+    simint, simtest, csimint, csimtest{multcomp},
+    friedmanmc, kruskalmc{pgirmess}.
 
 %prep
 %setup -q -c -n multcompView
+cd %{_builddir}/multcompView
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576779825
+export SOURCE_DATE_EPOCH=1589536229
 
 %install
-export SOURCE_DATE_EPOCH=1576779825
+export SOURCE_DATE_EPOCH=1589536229
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
