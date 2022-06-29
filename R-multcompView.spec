@@ -4,7 +4,7 @@
 #
 Name     : R-multcompView
 Version  : 0.1.8
-Release  : 37
+Release  : 38
 URL      : https://cran.r-project.org/src/contrib/multcompView_0.1-8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/multcompView_0.1-8.tar.gz
 Summary  : Visualizations of Paired Comparisons
